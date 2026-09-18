@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Устный счёт | 7 класс</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="mental-count.css">
+</head>
+<body>
+    <div class="game-container">
+
+        <!-- Стартовый экран -->
+        <div id="start-screen" class="screen active">
+            <div class="start-card">
+                <h1>⏱️ Устный счёт</h1>
+                <p class="rules">
+                    У тебя <b>3 минуты</b>, чтобы решить как можно больше примеров.<br>
+                    Вводи ответ и нажимай <b>Enter</b>.<br><br>
+                    <b>Внимание:</b> десятичные дроби вводи через точку или запятую.
+                </p>
+                <button id="start-btn" class="big-btn">Начать</button>
+                <a href="../class7.html" class="back-link">← К списку игр</a>
+            </div>
+        </div>
+
+        <!-- Игровой экран -->
+        <div id="game-screen" class="screen">
+            <div class="timer" id="timer">03:00</div>
+
+            <div class="task-card" id="task-card">
+                <div class="task-text" id="task-text">0.6 + 2</div>
+            </div>
+
+            <input type="text"
+                   id="answer-input"
+                   class="answer-input"
+                   placeholder="Ответ"
+                   autocomplete="off"
+                   inputmode="text">
+
+            <div class="progress-info">
+                <span id="progress">Задание 1 из 40</span>
+            </div>
+        </div>
+
+        <!-- Экран результата -->
+        <div id="result-screen" class="screen">
+            <div class="result-card">
+                <h1 id="result-emoji">🎉</h1>
+                <h2>Игра окончена!</h2>
+                <p class="result-line">Верных ответов: <span id="correct-count">0</span></p>
+                <p class="result-line">Всего заданий: <span id="total-count">40</span></p>
+                <p class="result-line">Время: <span id="time-taken">0</span> сек</p>
+                <button id="restart-btn" class="big-btn">Играть снова</button>
+                <a href="../class7.html" class="back-link">← К списку игр</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="mental-count.js"></script>
+</body>
+</html>
