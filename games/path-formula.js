@@ -19,6 +19,7 @@ const taskText    = document.getElementById('task-text');
 const taskHint    = document.getElementById('task-hint');
 const taskCard    = document.getElementById('task-card');
 const answerInput = document.getElementById('answer-input');
+const submitBtn   = document.getElementById('submit-btn');
 const progressEl  = document.getElementById('progress');
 
 const correctCountEl = document.getElementById('correct-count');
@@ -42,25 +43,13 @@ function randInt(min, max) {
 // =========================================================
 //  ГЕНЕРАЦИЯ ЗАДАЧИ
 // =========================================================
-// Тип задачи:
-//   'S' — даны v и t, найти S
-//   'v' — даны S и t, найти v
-//   't' — даны S и v, найти t
-//
-// Условия:
-//   S = v * t, причём один из множителей однозначный (1–9)
-//   При делении: делитель однозначный, деление без остатка
-// =========================================================
 function generateTask() {
     const type = ['S', 'v', 't'][randInt(0, 2)];
 
     if (type === 'S') {
-        // Дано: v и t. Найти S = v * t.
-        // Один из множителей — однозначный (1–9), другой — 10..99.
         const oneDigit = randInt(2, 9);
-        const other    = randInt(2, 20); // чтобы значения были разумными
+        const other    = randInt(2, 20);
 
-        // Случайно решаем, что однозначное: скорость или время
         const vIsOneDigit = Math.random() < 0.5;
 
         const v = vIsOneDigit ? oneDigit : other;
@@ -78,8 +67,6 @@ function generateTask() {
     }
 
     if (type === 'v') {
-        // Дано: S и t. Найти v = S / t.
-        // t — однозначное, S кратно t.
         const t = randInt(2, 9);
         const v = randInt(2, 20);
         const S = v * t;
@@ -94,9 +81,6 @@ function generateTask() {
         };
     }
 
-    // type === 't'
-    // Дано: S и v. Найти t = S / v.
-    // v — однозначное, S кратно v.
     const v = randInt(2, 9);
     const t = randInt(2, 20);
     const S = v * t;
@@ -226,3 +210,5 @@ answerInput.addEventListener('keydown', (e) => {
         checkAnswer();
     }
 });
+
+submitBtn.addEventListener('click', checkAnswer);
