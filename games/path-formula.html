@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формула пути | 4 класс</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="mental-count.css">
+</head>
+<body>
+    <div class="game-container">
+
+        <!-- Стартовый экран -->
+        <div id="start-screen" class="screen active">
+            <div class="start-card">
+                <h1>🚗 Формула пути</h1>
+                <p class="rules">
+                    На карточке даны <b>две величины</b>:<br>
+                    скорость (v), время (t) или расстояние (S).<br>
+                    Найди <b>третью</b>!<br><br>
+                    У тебя <b>5 минут</b>. Вводи ответ и нажимай <b>Enter</b>.<br>
+                    Пиши только число (без букв).
+                </p>
+                <button id="start-btn" class="big-btn">Начать</button>
+                <a href="../class4.html" class="back-link">← К списку игр</a>
+            </div>
+        </div>
+
+        <!-- Игровой экран -->
+        <div id="game-screen" class="screen">
+            <div class="timer" id="timer">05:00</div>
+
+            <div class="task-card" id="task-card">
+                <div class="task-text" id="task-text"></div>
+                <div class="task-hint" id="task-hint"></div>
+            </div>
+
+            <input type="text"
+                   id="answer-input"
+                   class="answer-input"
+                   placeholder="Ответ"
+                   autocomplete="off"
+                   inputmode="numeric">
+
+            <div class="progress-info">
+                <span id="progress">Верных ответов: 0</span>
+            </div>
+        </div>
+
+        <!-- Экран результата -->
+        <div id="result-screen" class="screen">
+            <div class="result-card">
+                <h1 id="result-emoji">🎉</h1>
+                <h2>Время вышло!</h2>
+                <p class="result-line">Верных ответов: <span id="correct-count">0</span></p>
+                <p class="result-line">Неверных попыток: <span id="wrong-count">0</span></p>
+                <p class="result-line">Время: <span id="time-taken">0</span> сек</p>
+                <button id="restart-btn" class="big-btn">Играть снова</button>
+                <a href="../class4.html" class="back-link">← К списку игр</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="path-formula.js"></script>
+</body>
+</html>
