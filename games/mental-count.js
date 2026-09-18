@@ -1,7 +1,5 @@
 // ====== ЗАДАНИЯ ======
-// Легко добавлять новые — просто дописывай объекты {text, answer}
 const TASKS = [
-    // Твои примеры
     { text: "-0.6 + 2",             answer: 1.4 },
     { text: "-7.3 + 8.2",           answer: 0.9 },
     { text: "1.5 - 2.9",            answer: -1.4 },
@@ -9,7 +7,6 @@ const TASKS = [
     { text: "-6.19 - 2.51",         answer: -8.7 },
     { text: "-0.803 - (-1.6)",      answer: 0.797 },
 
-    // Дополнительные — сложение/вычитание десятичных
     { text: "3.7 + 4.5",            answer: 8.2 },
     { text: "-5.2 + 3.8",           answer: -1.4 },
     { text: "6.04 - 2.7",           answer: 3.34 },
@@ -25,7 +22,6 @@ const TASKS = [
     { text: "9.6 - 12.4",           answer: -2.8 },
     { text: "-7.07 + 3.07",         answer: -4 },
 
-    // Смешанные с целыми
     { text: "4 - 6.5",              answer: -2.5 },
     { text: "-8 + 3.25",            answer: -4.75 },
     { text: "10.5 - 15",            answer: -4.5 },
@@ -33,7 +29,6 @@ const TASKS = [
     { text: "2.4 + (-7)",           answer: -4.6 },
     { text: "-12 + 5.8",            answer: -6.2 },
 
-    // Умножение/деление десятичных (базовое)
     { text: "0.5 × 6",              answer: 3 },
     { text: "-2.4 × 2",             answer: -4.8 },
     { text: "1.2 × 5",              answer: 6 },
@@ -42,7 +37,6 @@ const TASKS = [
     { text: "-9.6 ÷ 3",             answer: -3.2 },
     { text: "4.5 ÷ 0.5",            answer: 9 },
 
-    // Ещё дроби
     { text: "-1.1 - 2.2",           answer: -3.3 },
     { text: "3.33 + 6.67",          answer: 10 },
     { text: "-5.5 + 2.25",          answer: -3.25 },
@@ -65,6 +59,7 @@ const timerEl    = document.getElementById('timer');
 const taskText   = document.getElementById('task-text');
 const taskCard   = document.getElementById('task-card');
 const answerInput= document.getElementById('answer-input');
+const submitBtn  = document.getElementById('submit-btn');
 const progressEl = document.getElementById('progress');
 
 const correctCountEl = document.getElementById('correct-count');
@@ -77,7 +72,7 @@ let currentIndex = 0;
 let correctCount = 0;
 let timeLeft = GAME_DURATION;
 let timerId = null;
-let lockInput = false; // блокировка во время анимации
+let lockInput = false;
 
 // ====== ПЕРЕМЕШИВАНИЕ ======
 function shuffle(arr) {
@@ -123,7 +118,7 @@ function tick() {
         timerEl.classList.add('warning');
     }
     if (timeLeft <= 0) {
-        endGame(false); // время вышло
+        endGame(false);
     }
 }
 
@@ -136,7 +131,7 @@ function updateTimerDisplay() {
 // ====== ПОКАЗ ЗАДАНИЯ ======
 function showTask() {
     if (currentIndex >= shuffledTasks.length) {
-        endGame(true); // все задания решены
+        endGame(true);
         return;
     }
     taskText.textContent = shuffledTasks[currentIndex].text;
@@ -154,8 +149,6 @@ function checkAnswer() {
     if (isNaN(userAnswer)) return;
 
     const correct = shuffledTasks[currentIndex].answer;
-
-    // сравнение с точностью до 1e-6
     const isCorrect = Math.abs(userAnswer - correct) < 1e-6;
 
     if (isCorrect) {
@@ -210,3 +203,5 @@ answerInput.addEventListener('keydown', (e) => {
         checkAnswer();
     }
 });
+
+submitBtn.addEventListener('click', checkAnswer);
