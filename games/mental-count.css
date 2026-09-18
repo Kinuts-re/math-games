@@ -1,0 +1,180 @@
+.game-container {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Стартовый и результат */
+.start-card, .result-card {
+    background: #fff;
+    border-radius: 25px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+}
+
+.start-card h1 {
+    color: #1dd1a1;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
+.rules {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.big-btn {
+    background: linear-gradient(135deg, #1dd1a1, #10ac84);
+    color: #fff;
+    border: none;
+    padding: 16px 60px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(29,209,161,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.big-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(29,209,161,0.6);
+}
+
+.big-btn:active {
+    transform: translateY(0);
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.back-link:hover { color: #555; }
+
+/* Игровой экран */
+.timer {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+    letter-spacing: 2px;
+    transition: color 0.3s;
+}
+
+.timer.warning {
+    color: #ff6b6b;
+    animation: pulse 0.7s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+.task-card {
+    background: #fff;
+    border-radius: 25px;
+    padding: 50px 30px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    margin-bottom: 25px;
+}
+
+.task-text {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #2d3436;
+    letter-spacing: 1px;
+}
+
+.task-card.correct {
+    animation: correctFlash 0.5s;
+}
+
+@keyframes correctFlash {
+    0% { background: #fff; }
+    50% { background: #d4f8e8; }
+    100% { background: #fff; }
+}
+
+.task-card.wrong {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.answer-input {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.8rem;
+    text-align: center;
+    border: 3px solid rgba(255,255,255,0.6);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.95);
+    outline: none;
+    font-weight: 700;
+    color: #2d3436;
+    transition: border-color 0.2s;
+}
+
+.answer-input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.3);
+}
+
+.progress-info {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Результат */
+.result-card h2 {
+    color: #2d3436;
+    margin-bottom: 20px;
+}
+
+#result-emoji {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.result-line {
+    font-size: 1.3rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.result-line span {
+    font-weight: 800;
+    color: #1dd1a1;
+}
